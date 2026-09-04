@@ -11,6 +11,7 @@ export default function TripCard({ trip }: { trip: Trip }) {
   const { openModal } = useModal();
   const departure = trip.departures[0];
   const lowSeats = departure ? departure.seatsLeft <= 3 : false;
+  const plentySeats = departure ? departure.seatsLeft >= 10 : false;
 
   return (
     <article className={`trip-card${departure ? '' : ' trip-card--no-date'}`}>
@@ -50,7 +51,9 @@ export default function TripCard({ trip }: { trip: Trip }) {
             {departure ? (
               <>
                 <span className="trip-card__price">{formatPrice(trip.price)}</span>
-                <span className={`trip-card__seats${lowSeats ? ' trip-card__seats--low' : ''}`}>
+                <span
+                  className={`trip-card__seats${lowSeats ? ' trip-card__seats--low' : plentySeats ? ' trip-card__seats--plenty' : ''}`}
+                >
                   Осталось {seatsLabel(departure.seatsLeft)}
                 </span>
               </>

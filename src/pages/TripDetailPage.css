@@ -5,7 +5,7 @@
 .trip-detail__breadcrumb a {
   text-decoration: none;
   font-weight: 700;
-  color: var(--color-burgundy);
+  color: var(--color-accent);
 }
 
 .trip-detail__hero {

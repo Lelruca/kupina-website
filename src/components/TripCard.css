@@ -123,6 +123,10 @@
   color: var(--color-danger);
 }
 
+.trip-card__seats--plenty {
+  color: var(--color-success);
+}
+
 .trip-card__seats--pending {
   font-weight: 400;
   font-style: italic;

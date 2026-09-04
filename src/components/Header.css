@@ -27,10 +27,9 @@
 }
 
 .site-header__logo {
-  height: 40px;
+  height: 36px;
   width: auto;
   flex-shrink: 0;
-  border-radius: 3px;
 }
 
 .site-header__nav--desktop {
@@ -51,7 +50,7 @@
 }
 
 .site-header__nav--desktop a:hover {
-  color: var(--color-burgundy);
+  color: var(--color-accent);
 }
 
 .site-header__actions {

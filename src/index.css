@@ -18,7 +18,10 @@
   --color-gold: #a6813b;
   --color-gold-soft: #f1e6cc;
 
-  --color-success: #2f6b4f;
+  /* Приглушённые версии цветов из логотипа службы — зелёный и синий. */
+  --color-success: #3d7a3f;
+  --color-accent: #3e3b78;
+  --color-accent-dark: #2c2a58;
   --color-danger: #8f3030;
 
   --font-serif: 'PT Serif', Georgia, 'Times New Roman', serif;
