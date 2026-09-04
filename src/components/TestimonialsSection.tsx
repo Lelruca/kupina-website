@@ -1,13 +1,26 @@
 import { testimonials } from '../data/content';
+import { useModal } from '../context/ModalContext';
+import ReviewForm from './ReviewForm';
 import './TestimonialsSection.css';
 
 export default function TestimonialsSection() {
+  const { openModal } = useModal();
+
   return (
     <section className="section section--alt" id="reviews" aria-label="Отзывы">
       <div className="container">
-        <div className="section-head">
-          <p className="section-kicker">Отзывы</p>
-          <h2 className="section-title">Что говорят паломники</h2>
+        <div className="section-head testimonials-head">
+          <div>
+            <p className="section-kicker">Отзывы</p>
+            <h2 className="section-title">Что говорят паломники</h2>
+          </div>
+          <button
+            type="button"
+            className="btn btn--secondary testimonials-head__btn"
+            onClick={() => openModal(<ReviewForm />, 'Добавить отзыв')}
+          >
+            Добавить отзыв
+          </button>
         </div>
         <ul className="testimonials-grid">
           {testimonials.map((item) => (

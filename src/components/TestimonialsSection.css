@@ -1,3 +1,15 @@
+.testimonials-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.testimonials-head__btn {
+  flex-shrink: 0;
+}
+
 .testimonials-grid {
   display: grid;
   gap: 1.25rem;

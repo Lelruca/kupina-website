@@ -12,6 +12,11 @@ export const PICKUP_POINTS = ['Купавна', 'Железнодорожный'
 export const BOOKING_DISABLED_MESSAGE =
   'Это демонстрационная версия. Заявка не отправлена. Для записи позвоните по телефону ' + PHONE_DISPLAY + '.';
 
+export const REVIEW_DISABLED_MESSAGE =
+  'Это демонстрационная версия. Отзыв не отправлен и не сохранён. Чтобы поделиться отзывом, позвоните по телефону ' +
+  PHONE_DISPLAY +
+  '.';
+
 export const MESSENGER_PENDING_MESSAGE =
   'Ссылка появится после согласования с владельцами службы. Пока свяжитесь по телефону ' + PHONE_DISPLAY + '.';
 
