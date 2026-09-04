@@ -21,11 +21,7 @@ export default function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <Link to="/" className="site-header__brand" onClick={() => setMenuOpen(false)}>
-          <svg viewBox="0 0 48 48" aria-hidden="true" className="site-header__flame">
-            <path fill="#6E2A34" d="M24 3c7 7 13 16 13 24.5C37 35.9 31.2 42 24 42s-13-6.1-13-14.5C11 22 13 18 16 15c-1 5 1 8.5 4 9.5C19 15.5 20 9 24 3Z" />
-            <path fill="#B4863C" d="M24.5 17c3 4.5 4.5 7.5 4.5 11a5 5 0 1 1-10 0c0-2 .8-3.8 1.8-5.3.2 2 1.3 3.6 2.7 4.1-1-3.7-.6-6.9 1-9.8Z" />
-          </svg>
-          <span>{ORG_NAME}</span>
+          <img src="/logo.png" alt={ORG_NAME} className="site-header__logo" />
         </Link>
 
         <nav className="site-header__nav site-header__nav--desktop" aria-label="Основная навигация">

@@ -26,9 +26,9 @@
   margin-right: auto;
 }
 
-.site-header__flame {
-  width: 28px;
-  height: 28px;
+.site-header__logo {
+  height: 36px;
+  width: auto;
   flex-shrink: 0;
 }
 
