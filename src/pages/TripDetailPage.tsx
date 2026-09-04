@@ -24,10 +24,17 @@ export default function TripDetailPage() {
     return <Navigate to="/404" replace />;
   }
 
+  const hasDates = trip.departures.length > 0;
+  const multiDate = trip.departures.length > 1;
+  const anyAvailable = trip.departures.some((d) => d.seatsLeft > 0);
   const departure = trip.departures[0];
-  const openBooking = () => openModal(<BookingForm tripTitle={trip.title} />, `Бронирование: ${trip.title}`);
+
+  const openBooking = () =>
+    openModal(<BookingForm tripTitle={trip.title} departures={trip.departures} />, `Бронирование: ${trip.title}`);
   const openNoDate = () => openModal(<NoDateContent tripTitle={trip.title} />, `Даты поездки: ${trip.title}`);
-  const openPrimaryAction = departure ? openBooking : openNoDate;
+  const openPrimaryAction = hasDates ? openBooking : openNoDate;
+  const primaryActionLabel = !hasDates ? 'Узнать о датах' : anyAvailable ? 'Забронировать место' : 'Записаться в лист ожидания';
+  const primaryActionClass = !hasDates || !anyAvailable ? 'btn--accent' : 'btn--primary';
 
   return (
     <main id="main-content" className="trip-detail">
@@ -43,8 +50,8 @@ export default function TripDetailPage() {
           <dl className="trip-detail__facts">
             <div>
               <dt>Дата</dt>
-              <dd className={departure ? 'demo-note' : 'trip-detail__value-pending'}>
-                {departure ? departure.date : 'Уточняется'}
+              <dd className={hasDates ? 'demo-note' : 'trip-detail__value-pending'}>
+                {!hasDates ? 'Уточняется' : multiDate ? trip.departures.map((d) => d.date).join(', ') : departure.date}
               </dd>
             </div>
             <div>
@@ -53,7 +60,7 @@ export default function TripDetailPage() {
             </div>
             <div>
               <dt>Цена</dt>
-              {departure ? (
+              {hasDates ? (
                 <dd className="trip-detail__price">
                   {formatPrice(trip.price)} <span>{trip.priceNote}</span>
                 </dd>
@@ -63,7 +70,17 @@ export default function TripDetailPage() {
             </div>
             <div>
               <dt>Свободные места</dt>
-              <dd>{departure ? `Осталось ${seatsLabel(departure.seatsLeft)}` : 'Появятся вместе с датой'}</dd>
+              <dd className={anyAvailable ? undefined : 'trip-detail__value-pending'}>
+                {!hasDates
+                  ? 'Появятся вместе с датой'
+                  : multiDate
+                    ? anyAvailable
+                      ? 'Есть свободные места — выбор даты при бронировании'
+                      : 'Мест нет ни на одну дату — лист ожидания'
+                    : anyAvailable
+                      ? `Осталось ${seatsLabel(departure.seatsLeft)}`
+                      : 'Мест нет — лист ожидания'}
+              </dd>
             </div>
             <div>
               <dt>Сопровождающий</dt>
@@ -74,14 +91,14 @@ export default function TripDetailPage() {
               <dd>{trip.pickupPoints.join(', ')}</dd>
             </div>
           </dl>
-          {!departure && (
+          {!hasDates && (
             <p className="trip-detail__no-date-note">
               Этот маршрут уже проводился и снова появится в расписании, но точная дата на ближайшие месяцы пока не
               назначена.
             </p>
           )}
-          <button type="button" className="btn btn--primary btn--block" onClick={openPrimaryAction}>
-            {departure ? 'Забронировать место' : 'Узнать о датах'}
+          <button type="button" className={`btn ${primaryActionClass} btn--block`} onClick={openPrimaryAction}>
+            {primaryActionLabel}
           </button>
         </div>
       </section>
@@ -179,9 +196,15 @@ export default function TripDetailPage() {
       </section>
 
       <section className="container trip-detail__cta">
-        <p>{departure ? 'Готовы поехать?' : 'Хотите поехать, когда появится дата?'}</p>
-        <button type="button" className="btn btn--primary" onClick={openPrimaryAction}>
-          {departure ? 'Забронировать место' : 'Узнать о датах'}
+        <p>
+          {!hasDates
+            ? 'Хотите поехать, когда появится дата?'
+            : anyAvailable
+              ? 'Готовы поехать?'
+              : 'Мест нет, но можно записаться в лист ожидания'}
+        </p>
+        <button type="button" className={`btn ${primaryActionClass}`} onClick={openPrimaryAction}>
+          {primaryActionLabel}
         </button>
       </section>
     </main>

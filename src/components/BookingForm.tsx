@@ -1,19 +1,32 @@
 import { useId, useState } from 'react';
 import type { FormEvent } from 'react';
+import type { TripDeparture } from '../data/trips';
 import { BOOKING_DISABLED_MESSAGE, PHONE_DISPLAY, PHONE_HREF, PICKUP_POINTS } from '../data/constants';
+import { seatsLabel } from '../utils/format';
 import { useModal } from '../context/ModalContext';
 import './BookingForm.css';
 
 interface BookingFormProps {
   tripTitle?: string;
+  /** Даты выезда маршрута. Если их больше одной, форма показывает выбор даты. */
+  departures: TripDeparture[];
 }
 
 const CONTACT_METHODS = ['Телефонный звонок', 'WhatsApp', 'Telegram'] as const;
 
-export default function BookingForm({ tripTitle }: BookingFormProps) {
+export default function BookingForm({ tripTitle, departures }: BookingFormProps) {
   const { closeModal } = useModal();
   const [submitted, setSubmitted] = useState(false);
   const headingId = useId();
+  // По умолчанию выбираем первую дату, на которую ещё есть места, а не обязательно самую раннюю.
+  const defaultIndex = Math.max(
+    departures.findIndex((d) => d.seatsLeft > 0),
+    0
+  );
+  const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
+  const selected = departures[selectedIndex];
+  const isWaitlist = selected ? selected.seatsLeft <= 0 : false;
+  const tripLabel = tripTitle ? `«${tripTitle}»${selected ? ` — ${selected.date}` : ''}` : '';
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -42,11 +55,36 @@ export default function BookingForm({ tripTitle }: BookingFormProps) {
   return (
     <form className="booking-form" onSubmit={handleSubmit} noValidate>
       <h2 id={headingId} className="booking-title">
-        {tripTitle ? `Бронирование поездки «${tripTitle}»` : 'Бронирование поездки'}
+        {isWaitlist
+          ? `Лист ожидания: поездка ${tripLabel || ''}`.trim()
+          : tripTitle
+            ? `Бронирование поездки ${tripLabel}`
+            : 'Бронирование поездки'}
       </h2>
       <p className="demo-callout">
-        Демонстрационная форма: данные никуда не отправляются и не сохраняются.
+        {isWaitlist
+          ? 'На эту дату мест уже нет. Демонстрационная форма: заявка в лист ожидания никуда не отправляется и не сохраняется. Если место освободится, служба свяжется с вами по указанному телефону.'
+          : 'Демонстрационная форма: данные никуда не отправляются и не сохраняются.'}
       </p>
+
+      {departures.length > 1 && (
+        <fieldset className="booking-field">
+          <legend>Дата поездки</legend>
+          <div className="booking-radio-group booking-radio-group--stacked">
+            {departures.map((d, index) => (
+              <label key={d.date} className="booking-radio">
+                <input
+                  type="radio"
+                  name="departureDate"
+                  checked={index === selectedIndex}
+                  onChange={() => setSelectedIndex(index)}
+                />
+                {d.date} — {d.seatsLeft <= 0 ? 'мест нет' : `осталось ${seatsLabel(d.seatsLeft)}`}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
 
       <div className="booking-field">
         <label htmlFor="bf-name">Имя</label>
@@ -91,8 +129,8 @@ export default function BookingForm({ tripTitle }: BookingFormProps) {
         <textarea id="bf-comment" name="comment" rows={3} placeholder="Например: едем вдвоём, нужна помощь с посадкой" />
       </div>
 
-      <button type="submit" className="btn btn--primary btn--block">
-        Отправить заявку
+      <button type="submit" className={`btn ${isWaitlist ? 'btn--accent' : 'btn--primary'} btn--block`}>
+        {isWaitlist ? 'Записаться в лист ожидания' : 'Отправить заявку'}
       </button>
     </form>
   );

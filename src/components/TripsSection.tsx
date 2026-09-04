@@ -3,21 +3,24 @@ import { CATEGORY_LABELS, trips, type TripCategory } from '../data/trips';
 import TripCard from './TripCard';
 import './TripsSection.css';
 
-type FilterValue = 'all' | TripCategory;
+type FilterValue = 'upcoming' | 'all' | TripCategory;
 
 const FILTERS: { value: FilterValue; label: string }[] = [
-  { value: 'all', label: 'Все' },
+  { value: 'upcoming', label: 'Ближайшие' },
   { value: 'day', label: CATEGORY_LABELS.day },
   { value: 'weekend', label: CATEGORY_LABELS.weekend },
   { value: 'multiday', label: CATEGORY_LABELS.multiday },
-  { value: 'first-time', label: CATEGORY_LABELS['first-time'] },
+  { value: 'all', label: 'Все' },
 ];
 
 export default function TripsSection() {
-  const [filter, setFilter] = useState<FilterValue>('all');
+  const [filter, setFilter] = useState<FilterValue>('upcoming');
 
   const filtered = useMemo(() => {
-    const matching = filter === 'all' ? trips : trips.filter((trip) => trip.categories.includes(filter));
+    let matching;
+    if (filter === 'all') matching = trips;
+    else if (filter === 'upcoming') matching = trips.filter((trip) => trip.departures.length > 0);
+    else matching = trips.filter((trip) => trip.categories.includes(filter));
     // Поездки без назначенной даты не убираем из расписания, а откладываем в конец списка.
     return [...matching].sort((a, b) => Number(b.departures.length > 0) - Number(a.departures.length > 0));
   }, [filter]);

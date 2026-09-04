@@ -241,6 +241,15 @@ select {
   background: var(--color-pine-dark);
 }
 
+.btn--accent {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn--accent:hover {
+  background: var(--color-accent-dark);
+}
+
 .btn--sm {
   padding: 0.6rem 1.15rem;
   font-size: 0.9rem;
