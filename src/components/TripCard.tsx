@@ -47,13 +47,17 @@ export default function TripCard({ trip }: { trip: Trip }) {
 
         <div className="trip-card__footer">
           <div className="trip-card__price-row">
-            <span className="trip-card__price">{formatPrice(trip.price)}</span>
             {departure ? (
-              <span className={`trip-card__seats${lowSeats ? ' trip-card__seats--low' : ''}`}>
-                Осталось {seatsLabel(departure.seatsLeft)}
-              </span>
+              <>
+                <span className="trip-card__price">{formatPrice(trip.price)}</span>
+                <span className={`trip-card__seats${lowSeats ? ' trip-card__seats--low' : ''}`}>
+                  Осталось {seatsLabel(departure.seatsLeft)}
+                </span>
+              </>
             ) : (
-              <span className="trip-card__seats trip-card__seats--pending">Проводится периодически</span>
+              <span className="trip-card__seats trip-card__seats--pending">
+                Цена и места — вместе с датой. Проводится периодически
+              </span>
             )}
           </div>
           <div className="trip-card__actions">

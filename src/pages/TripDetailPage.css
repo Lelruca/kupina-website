@@ -64,7 +64,7 @@
   color: var(--color-muted);
 }
 
-.trip-detail__facts dd.trip-detail__date-pending {
+.trip-detail__facts dd.trip-detail__value-pending {
   color: var(--color-muted);
   font-style: italic;
   font-weight: 400;

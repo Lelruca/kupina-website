@@ -43,7 +43,7 @@ export default function TripDetailPage() {
           <dl className="trip-detail__facts">
             <div>
               <dt>Дата</dt>
-              <dd className={departure ? 'demo-note' : 'trip-detail__date-pending'}>
+              <dd className={departure ? 'demo-note' : 'trip-detail__value-pending'}>
                 {departure ? departure.date : 'Уточняется'}
               </dd>
             </div>
@@ -53,9 +53,13 @@ export default function TripDetailPage() {
             </div>
             <div>
               <dt>Цена</dt>
-              <dd className="trip-detail__price">
-                {formatPrice(trip.price)} <span>{trip.priceNote}</span>
-              </dd>
+              {departure ? (
+                <dd className="trip-detail__price">
+                  {formatPrice(trip.price)} <span>{trip.priceNote}</span>
+                </dd>
+              ) : (
+                <dd className="trip-detail__value-pending">Уточняется вместе с датой</dd>
+              )}
             </div>
             <div>
               <dt>Свободные места</dt>
