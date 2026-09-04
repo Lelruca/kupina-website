@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Неопалимая Купина</title>
+    <!--
+      GitHub Pages не умеет отдавать index.html на прямые ссылки вида /kupina-website/trips/slug
+      (это статический хостинг без серверного роутинга). Стандартный приём для SPA на GitHub Pages:
+      кодируем реальный путь в query-строку и редиректим на index.html, где обратный скрипт
+      (см. index.html) восстанавливает путь через history.replaceState до старта роутера.
+      https://github.com/rafgraph/spa-github-pages
+    -->
+    <script type="text/javascript">
+      var segmentCount = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
