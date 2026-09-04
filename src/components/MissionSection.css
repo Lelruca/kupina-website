@@ -1,0 +1,35 @@
+.mission__inner {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.mission__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.mission__list h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.mission__list p {
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+
+.mission__photo {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 900px) {
+  .mission__inner {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+  }
+}

@@ -1,0 +1,190 @@
+.trip-detail__breadcrumb {
+  padding-top: 1.5rem;
+}
+
+.trip-detail__breadcrumb a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--color-burgundy);
+}
+
+.trip-detail__hero {
+  display: grid;
+  gap: 1.75rem;
+  padding-block: 1.5rem 2.5rem;
+}
+
+.trip-detail__photo {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.trip-detail__intro h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 0.6rem;
+}
+
+.trip-detail__desc {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.trip-detail__facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+
+.trip-detail__facts dt {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.trip-detail__facts dd {
+  margin: 0.15rem 0 0;
+  font-weight: 700;
+}
+
+.trip-detail__price {
+  color: var(--color-burgundy);
+  font-family: var(--font-serif);
+}
+
+.trip-detail__price span {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.trip-detail__section {
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.trip-detail__section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.trip-detail__program {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  counter-reset: day;
+}
+
+.trip-detail__program li {
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--color-gold);
+}
+
+.trip-detail__program h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.trip-detail__program p {
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+
+.trip-detail__pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.trip-detail__pill-list li {
+  background: var(--color-burgundy-soft);
+  color: var(--color-burgundy);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+}
+
+.trip-detail__grid-section {
+  display: grid;
+  gap: 2rem;
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-line);
+  grid-template-columns: 1fr;
+}
+
+.trip-detail__grid-section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.trip-detail__check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.trip-detail__check-list li {
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--color-muted);
+}
+
+.trip-detail__check-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-pine);
+  font-weight: 700;
+}
+
+.trip-detail__check-list--minus li::before {
+  content: '·';
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 0.7;
+}
+
+.trip-detail__load-badge {
+  text-transform: capitalize;
+}
+
+.trip-detail__beginner {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  border-top: none;
+  padding: 2rem;
+}
+
+.trip-detail__cta {
+  text-align: center;
+  padding-block: 3rem 4rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.trip-detail__cta p {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+}
+
+@media (min-width: 860px) {
+  .trip-detail__hero {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+
+  .trip-detail__grid-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .trip-detail__grid-section--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

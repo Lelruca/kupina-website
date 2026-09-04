@@ -1,0 +1,35 @@
+.leader__inner {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.leader__photo {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  max-width: 340px;
+  margin-inline: auto;
+}
+
+.leader__name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-burgundy);
+}
+
+.leader__text .demo-callout {
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 860px) {
+  .leader__inner {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3.5rem;
+  }
+
+  .leader__photo {
+    margin-inline: 0;
+  }
+}

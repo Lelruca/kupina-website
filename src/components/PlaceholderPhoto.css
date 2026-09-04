@@ -1,0 +1,80 @@
+.ph {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+}
+
+.ph::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image: radial-gradient(circle at 18% 20%, #fff 0, transparent 40%),
+    radial-gradient(circle at 82% 78%, #fff 0, transparent 35%);
+  z-index: -1;
+}
+
+.ph__icon {
+  width: 34%;
+  max-width: 64px;
+  height: auto;
+  fill: currentColor;
+  opacity: 0.85;
+}
+
+.ph__label {
+  font: 700 0.85rem/1 var(--font-sans);
+  letter-spacing: 0.04em;
+  opacity: 0.92;
+}
+
+.ph__badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-burgundy);
+  font: 700 0.62rem/1 var(--font-sans);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+}
+
+.ph--monastery {
+  background: linear-gradient(135deg, #7a3038, #3a1a20);
+}
+
+.ph--nature {
+  background: linear-gradient(135deg, #2f4a3c, #16261f);
+}
+
+.ph--road {
+  background: linear-gradient(135deg, #8a7350, #4c3e29);
+}
+
+.ph--group {
+  background: linear-gradient(135deg, #b4863c, #6e2a34);
+}
+
+.ph--meal {
+  background: linear-gradient(135deg, #a6813b, #5c4620);
+}
+
+.ph--care {
+  background: linear-gradient(135deg, #6e2a34, #23392e);
+}
+
+.ph--portrait {
+  background: linear-gradient(160deg, #7a3038, #23392e);
+}

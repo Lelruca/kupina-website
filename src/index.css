@@ -1,0 +1,305 @@
+/* ---------- Design tokens ---------- */
+:root {
+  --color-bg: #faf6ec;
+  --color-bg-alt: #f3ecdb;
+  --color-card: #fffdf8;
+  --color-ink: #2a241c;
+  --color-muted: #6b6355;
+  --color-line: #e4dcc8;
+
+  --color-burgundy: #6e2a34;
+  --color-burgundy-dark: #4f1e26;
+  --color-burgundy-soft: #f3e3e2;
+
+  --color-pine: #23392e;
+  --color-pine-dark: #172922;
+  --color-pine-soft: #e4ebe3;
+
+  --color-gold: #a6813b;
+  --color-gold-soft: #f1e6cc;
+
+  --color-success: #2f6b4f;
+  --color-danger: #8f3030;
+
+  --font-serif: 'PT Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container-width: 1180px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+
+  --shadow-card: 0 2px 4px rgba(42, 36, 28, 0.06), 0 10px 30px -12px rgba(42, 36, 28, 0.18);
+  --shadow-modal: 0 20px 60px -20px rgba(23, 20, 14, 0.45);
+
+  --transition-fast: 160ms ease;
+  --transition-base: 240ms ease;
+
+  color-scheme: light;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+  color: var(--color-ink);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ---------- Focus ---------- */
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--color-pine);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  z-index: 1000;
+  transition: top var(--transition-base);
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+/* ---------- Layout utilities ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section {
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 700 0.8rem/1 var(--font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.9rem;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  max-width: 42rem;
+}
+
+.section-lead {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  max-width: 40rem;
+}
+
+.section-head {
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font: 700 1rem/1 var(--font-sans);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--color-burgundy);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--color-burgundy-dark);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-burgundy);
+  border-color: var(--color-burgundy);
+}
+
+.btn--secondary:hover {
+  background: var(--color-burgundy-soft);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-line);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-gold);
+  color: var(--color-burgundy);
+}
+
+.btn--pine {
+  background: var(--color-pine);
+  color: #fff;
+}
+
+.btn--pine:hover {
+  background: var(--color-pine-dark);
+}
+
+.btn--sm {
+  padding: 0.6rem 1.15rem;
+  font-size: 0.9rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Demo badges ---------- */
+.demo-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: 700 0.72rem/1 var(--font-sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+  background: var(--color-burgundy-soft);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+}
+
+.demo-callout {
+  border: 1px dashed var(--color-gold);
+  background: var(--color-gold-soft);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+}
+
+/* ---------- Ornament divider ---------- */
+.ornament {
+  height: 14px;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 260px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='14' viewBox='0 0 260 14'%3E%3Cg fill='none' stroke='%23A6813B' stroke-width='1.4' opacity='0.55'%3E%3Cpath d='M0 7h96'/%3E%3Cpath d='M164 7h96'/%3E%3Ccircle cx='130' cy='7' r='4.4'/%3E%3Ccircle cx='114' cy='7' r='1.6'/%3E%3Ccircle cx='146' cy='7' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

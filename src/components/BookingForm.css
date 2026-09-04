@@ -1,0 +1,63 @@
+.booking-title {
+  font-size: 1.4rem;
+  padding-right: 2rem;
+}
+
+.booking-form,
+.booking-result {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.booking-field label,
+.booking-field legend {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.booking-field input,
+.booking-field select,
+.booking-field textarea {
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  background: #fff;
+  resize: vertical;
+}
+
+.booking-field input:focus-visible,
+.booking-field select:focus-visible,
+.booking-field textarea:focus-visible {
+  border-color: var(--color-gold);
+}
+
+.booking-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.1rem;
+}
+
+.booking-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.booking-result__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}

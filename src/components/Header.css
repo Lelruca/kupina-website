@@ -1,0 +1,140 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 246, 236, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.85rem;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-right: auto;
+}
+
+.site-header__flame {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.site-header__nav--desktop {
+  display: none;
+}
+
+.site-header__nav--desktop ul {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.site-header__nav--desktop a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  transition: color var(--transition-fast);
+}
+
+.site-header__nav--desktop a:hover {
+  color: var(--color-burgundy);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.site-header__phone {
+  display: none;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.site-header__ask {
+  display: none;
+}
+
+.site-header__burger {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-line);
+  background: #fff;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.site-header__burger span {
+  width: 20px;
+  height: 2px;
+  background: var(--color-ink);
+  border-radius: 2px;
+}
+
+.site-header__nav-mobile {
+  border-top: 1px solid var(--color-line);
+  background: var(--color-bg);
+  padding: 1rem 1.25rem 1.5rem;
+}
+
+.site-header__nav-mobile ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.site-header__nav-mobile a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-ink);
+}
+
+.site-header__phone--mobile {
+  display: inline-flex;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 860px) {
+  .site-header__nav--desktop {
+    display: block;
+  }
+
+  .site-header__phone {
+    display: inline-flex;
+  }
+
+  .site-header__ask {
+    display: inline-flex;
+  }
+
+  .site-header__burger {
+    display: none;
+  }
+
+  .site-header__nav-mobile {
+    display: none;
+  }
+}

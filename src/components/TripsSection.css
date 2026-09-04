@@ -1,0 +1,51 @@
+.trips-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.trips-filters__btn {
+  border: 1.5px solid var(--color-line);
+  background: var(--color-card);
+  color: var(--color-ink);
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.trips-filters__btn:hover {
+  border-color: var(--color-gold);
+}
+
+.trips-filters__btn.is-active {
+  background: var(--color-burgundy);
+  border-color: var(--color-burgundy);
+  color: #fff;
+}
+
+.trips-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.trips-empty {
+  color: var(--color-muted);
+  padding: 2rem 0;
+}
+
+@media (min-width: 640px) {
+  .trips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1080px) {
+  .trips-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,22 @@
+.social-mission__inner {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.social-mission__photo {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.social-mission__text p {
+  color: var(--color-muted);
+}
+
+@media (min-width: 860px) {
+  .social-mission__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
