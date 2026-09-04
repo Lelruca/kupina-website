@@ -21,7 +21,7 @@ export default function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <Link to="/" className="site-header__brand" onClick={() => setMenuOpen(false)}>
-          <img src="/logo.png" alt={ORG_NAME} className="site-header__logo" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt={ORG_NAME} className="site-header__logo" />
         </Link>
 
         <nav className="site-header__nav site-header__nav--desktop" aria-label="Основная навигация">
