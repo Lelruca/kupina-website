@@ -1,4 +1,4 @@
-import PlaceholderPhoto from './PlaceholderPhoto';
+import Photo from './Photo';
 import './LeaderSection.css';
 
 export default function LeaderSection() {
@@ -6,7 +6,7 @@ export default function LeaderSection() {
     <section className="section leader" aria-label="Сопровождающий">
       <div className="container leader__inner">
         <div className="leader__media">
-          <PlaceholderPhoto category="portrait" alt="Демонстрационное фото: Ольга Александровна" className="leader__photo" />
+          <Photo src="/photos/leader-olga.jpg" category="portrait" alt="Ольга Александровна" className="leader__photo" />
         </div>
         <div className="leader__text">
           <p className="section-kicker">Знакомство</p>
@@ -22,8 +22,8 @@ export default function LeaderSection() {
             в группе: от тех, кто едет уже в десятый раз, до тех, кто впервые переступает порог монастыря.
           </p>
           <p className="demo-callout">
-            Фотография и биография на этой странице — демонстрационные. Перед публикацией сайта их нужно заменить на
-            подтверждённые владельцами службы.
+            Биография на этой странице — демонстрационная. Перед публикацией сайта её нужно заменить на
+            подтверждённую владельцами службы.
           </p>
         </div>
       </div>
