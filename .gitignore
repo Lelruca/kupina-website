@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Исходный архив фото со старого сайта (291 файл, ~147 МБ) — не для репозитория.
+# Отобранные и сжатые фото для сайта лежат в public/photos.
+/photos/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

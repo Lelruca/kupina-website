@@ -3,7 +3,7 @@ import type { Trip } from '../data/trips';
 import { formatPrice, seatsLabel } from '../utils/format';
 import { useModal } from '../context/ModalContext';
 import BookingForm from './BookingForm';
-import PlaceholderPhoto from './PlaceholderPhoto';
+import Photo from './Photo';
 import './TripCard.css';
 
 export default function TripCard({ trip }: { trip: Trip }) {
@@ -13,7 +13,7 @@ export default function TripCard({ trip }: { trip: Trip }) {
   return (
     <article className="trip-card">
       <div className="trip-card__media">
-        <PlaceholderPhoto category={trip.photoCategory} alt={trip.photoAlt} />
+        <Photo src={trip.photo} category={trip.photoCategory} alt={trip.photoAlt} />
         <span className="trip-card__date demo-note">{trip.date}</span>
       </div>
       <div className="trip-card__body">

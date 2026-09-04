@@ -1,6 +1,6 @@
 import { useModal } from '../context/ModalContext';
 import { SocialMissionContent } from './InfoModals';
-import PlaceholderPhoto from './PlaceholderPhoto';
+import Photo from './Photo';
 import './SocialMissionSection.css';
 
 export default function SocialMissionSection() {
@@ -10,7 +10,12 @@ export default function SocialMissionSection() {
     <section className="section section--alt social-mission" aria-label="Социальная миссия">
       <div className="container social-mission__inner">
         <div className="social-mission__media">
-          <PlaceholderPhoto category="group" alt="Демонстрационное фото: паломническая группа у монастыря" className="social-mission__photo" />
+          <Photo
+            src="/photos/social-group.jpg"
+            category="group"
+            alt="Паломническая группа у Коломенского кремля. Фото из архива поездок службы"
+            className="social-mission__photo"
+          />
         </div>
         <div className="social-mission__text">
           <p className="section-kicker">Социальная миссия</p>

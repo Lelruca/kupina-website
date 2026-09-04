@@ -1,5 +1,5 @@
 import { galleryItems } from '../data/content';
-import PlaceholderPhoto from './PlaceholderPhoto';
+import Photo from './Photo';
 import './GallerySection.css';
 
 export default function GallerySection() {
@@ -17,14 +17,14 @@ export default function GallerySection() {
         <ul className="gallery-grid">
           {galleryItems.map((item, index) => (
             <li key={`${item.category}-${index}`} className={item.featured ? 'gallery-grid__item--featured' : ''}>
-              <PlaceholderPhoto category={item.category} alt={item.alt} className="gallery-photo" />
+              <Photo src={item.photo} category={item.category} alt={item.alt} className="gallery-photo" />
               <span className="gallery-caption">{item.caption}</span>
             </li>
           ))}
         </ul>
         <p className="demo-callout gallery-note">
-          Все фотографии на этой странице — демонстрационные заглушки. Перед публикацией сайта их нужно заменить на
-          настоящие фотографии службы.
+          Фотографии — из архива поездок службы разных лет, подобраны для наглядности прототипа. Перед публикацией
+          сайта нужно подтвердить права на использование каждого снимка и при необходимости заменить более новыми.
         </p>
       </div>
     </section>

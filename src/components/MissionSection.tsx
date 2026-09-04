@@ -1,4 +1,4 @@
-import PlaceholderPhoto from './PlaceholderPhoto';
+import Photo from './Photo';
 import './MissionSection.css';
 
 const POINTS = [
@@ -41,7 +41,12 @@ export default function MissionSection() {
           </ul>
         </div>
         <div className="mission__media">
-          <PlaceholderPhoto category="care" alt="Демонстрационное фото: паломники помогают друг другу в дороге" className="mission__photo" />
+          <Photo
+            src="/photos/mission-care.jpg"
+            category="care"
+            alt="Паломницы обнимаются у монастыря. Фото из архива поездок службы"
+            className="mission__photo"
+          />
         </div>
       </div>
     </section>

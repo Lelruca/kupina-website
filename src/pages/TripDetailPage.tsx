@@ -5,7 +5,7 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { useModal } from '../context/ModalContext';
 import { formatPrice, seatsLabel } from '../utils/format';
 import BookingForm from '../components/BookingForm';
-import PlaceholderPhoto from '../components/PlaceholderPhoto';
+import Photo from '../components/Photo';
 import Accordion from '../components/Accordion';
 import './TripDetailPage.css';
 
@@ -32,7 +32,7 @@ export default function TripDetailPage() {
       </div>
 
       <section className="trip-detail__hero container">
-        <PlaceholderPhoto category={trip.photoCategory} alt={trip.photoAlt} className="trip-detail__photo" />
+        <Photo src={trip.photo} category={trip.photoCategory} alt={trip.photoAlt} className="trip-detail__photo" />
         <div className="trip-detail__intro">
           <h1>{trip.title}</h1>
           <p className="trip-detail__desc">{trip.shortDescription}</p>

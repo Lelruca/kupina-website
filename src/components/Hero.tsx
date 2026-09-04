@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { PICKUP_POINTS } from '../data/constants';
 import { useModal } from '../context/ModalContext';
 import { ContactQuestionContent } from './InfoModals';
-import PlaceholderPhoto from './PlaceholderPhoto';
+import Photo from './Photo';
 import './Hero.css';
 
 export default function Hero() {
@@ -33,7 +33,12 @@ export default function Hero() {
           <p className="hero__pickup">Посадка: {PICKUP_POINTS.join(' · ')}</p>
         </div>
         <div className="hero__media">
-          <PlaceholderPhoto category="monastery" alt="Демонстрационное фото: монастырь в утреннем свете" className="hero__photo" />
+          <Photo
+            src="/photos/hero-lavra.jpg"
+            category="monastery"
+            alt="Николо-Сольбинский монастырь зимой. Фото из архива поездок службы"
+            className="hero__photo"
+          />
         </div>
       </div>
     </section>

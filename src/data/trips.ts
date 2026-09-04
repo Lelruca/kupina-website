@@ -42,6 +42,8 @@ export interface Trip {
   seatsLeft: number;
   photoCategory: PhotoCategory;
   photoAlt: string;
+  /** Реальное фото из архива поездок службы (kupina-palomnik.ru). Если не задано — используется заглушка. */
+  photo?: string;
   program: TripProgramDay[];
   shrines: string[];
   services: string;
@@ -74,7 +76,8 @@ export const trips: Trip[] = [
     pickupPoints: ['Купавна', 'Железнодорожный', 'Реутов', 'м. Новокосино'],
     seatsLeft: 6,
     photoCategory: 'monastery',
-    photoAlt: 'Демонстрационное фото: Серафимо-Дивеевский монастырь',
+    photoAlt: 'Часовня у источника в Дивееве. Фото из архива поездок службы',
+    photo: '/photos/trip-diveevo.jpg',
     program: [
       {
         title: 'День 1. Дорога и Дивеево',
@@ -148,7 +151,8 @@ export const trips: Trip[] = [
     pickupPoints: ['Купавна', 'Железнодорожный', 'Реутов', 'м. Новокосино'],
     seatsLeft: 4,
     photoCategory: 'nature',
-    photoAlt: 'Демонстрационное фото: леса и дорога вокруг Оптиной пустыни',
+    photoAlt: 'Группа паломников у ворот Оптиной пустыни. Фото из архива поездок службы',
+    photo: '/photos/trip-optina.jpg',
     program: [
       {
         title: 'День 1. Оптина пустынь',
@@ -208,7 +212,8 @@ export const trips: Trip[] = [
     pickupPoints: ['Купавна', 'Железнодорожный', 'Реутов', 'м. Новокосино'],
     seatsLeft: 12,
     photoCategory: 'road',
-    photoAlt: 'Демонстрационное фото: дорога через поля Ярославской области',
+    photoAlt: 'Годеново зимой. Фото из архива поездок службы',
+    photo: '/photos/trip-godenovo.jpg',
     program: [
       {
         title: 'Утро',
@@ -336,7 +341,8 @@ export const trips: Trip[] = [
     pickupPoints: ['Купавна', 'Железнодорожный', 'Реутов', 'м. Новокосино'],
     seatsLeft: 15,
     photoCategory: 'monastery',
-    photoAlt: 'Демонстрационное фото: Толгский монастырь на берегу Волги',
+    photoAlt: 'Успенский собор в Ярославле. Фото из архива поездок службы',
+    photo: '/photos/trip-yaroslavl.jpg',
     program: [
       { title: 'Утро', description: 'Выезд от точек посадки, дорога с рассказом об истории Ярославской земли.' },
       { title: 'День', description: 'Экскурсия по Ярославлю, посещение Толгского монастыря и кедровой рощи, переезд в Тутаев.' },

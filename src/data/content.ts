@@ -107,15 +107,59 @@ export interface GalleryItem {
   alt: string;
   caption: string;
   featured?: boolean;
+  /** Реальное фото из архива поездок службы (kupina-palomnik.ru). Если не задано — используется заглушка. */
+  photo?: string;
 }
 
 export const galleryItems: GalleryItem[] = [
-  { category: 'monastery', alt: 'Демонстрационное фото: монастырские купола', caption: 'Монастыри и обители', featured: true },
-  { category: 'road', alt: 'Демонстрационное фото: дорога паломнической группы', caption: 'Дорога к святым местам' },
-  { category: 'nature', alt: 'Демонстрационное фото: русская природа', caption: 'Природа средней полосы России' },
-  { category: 'group', alt: 'Демонстрационное фото: группа паломников на экскурсии', caption: 'Паломники в пути' },
-  { category: 'meal', alt: 'Демонстрационное фото: совместная трапеза', caption: 'Совместная трапеза' },
-  { category: 'care', alt: 'Демонстрационное фото: помощь друг другу в дороге', caption: 'Моменты взаимопомощи', featured: true },
-  { category: 'monastery', alt: 'Демонстрационное фото: монастырский двор', caption: 'Тишина монастырского двора' },
-  { category: 'nature', alt: 'Демонстрационное фото: озеро и лес', caption: 'Остановки среди природы' },
+  {
+    category: 'monastery',
+    alt: 'Троице-Сергиева Лавра. Фото из архива поездок службы',
+    caption: 'Монастыри и обители',
+    featured: true,
+    photo: '/photos/gallery-monastery-1.jpg',
+  },
+  {
+    category: 'road',
+    alt: 'Группа паломников по дороге к автобусу. Фото из архива поездок службы',
+    caption: 'Дорога к святым местам',
+    photo: '/photos/gallery-road.jpg',
+  },
+  {
+    category: 'nature',
+    alt: 'Колокольня у пруда с кувшинками в Годенове. Фото из архива поездок службы',
+    caption: 'Природа средней полосы России',
+    photo: '/photos/gallery-nature-1.jpg',
+  },
+  {
+    category: 'group',
+    alt: 'Группа паломников у монастыря в Годенове. Фото из архива поездок службы',
+    caption: 'Паломники в пути',
+    photo: '/photos/gallery-group.jpg',
+  },
+  {
+    category: 'meal',
+    alt: 'Паломники за чаепитием. Фото из архива поездок службы',
+    caption: 'Совместная трапеза',
+    photo: '/photos/gallery-meal.jpg',
+  },
+  {
+    category: 'care',
+    alt: 'Паломники в храме слушают рассказ сопровождающего. Фото из архива поездок службы',
+    caption: 'Моменты взаимопомощи',
+    featured: true,
+    photo: '/photos/gallery-care.jpg',
+  },
+  {
+    category: 'monastery',
+    alt: 'Поклонный крест у монастырской стены в Годенове. Фото из архива поездок службы',
+    caption: 'Тишина монастырского двора',
+    photo: '/photos/gallery-monastery-2.jpg',
+  },
+  {
+    category: 'nature',
+    alt: 'Монастырский сад. Фото из архива поездок службы',
+    caption: 'Остановки среди природы',
+    photo: '/photos/gallery-nature-2.jpg',
+  },
 ];
