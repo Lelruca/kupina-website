@@ -4,3 +4,14 @@
   object-fit: cover;
   object-position: center;
 }
+
+/* Внутри карточки поездки и плитки галереи рамку задаёт обёртка (aspect-ratio +
+   position: relative), а не сама картинка. width/height: 100% там ненадёжны —
+   на сборке для продакшена flex/grid-элемент может вырасти под "родной" размер
+   фото вместо рамки (проявляется только на высоких/узких фото). Абсолютное
+   позиционирование убирает эту зависимость. */
+.trip-card__media .real-photo,
+.gallery-grid li .real-photo {
+  position: absolute;
+  inset: 0;
+}

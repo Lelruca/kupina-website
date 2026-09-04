@@ -9,6 +9,8 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  min-height: 0;
+  min-width: 0;
 }
 
 .gallery-photo {
