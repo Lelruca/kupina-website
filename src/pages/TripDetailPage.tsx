@@ -5,6 +5,7 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { useModal } from '../context/ModalContext';
 import { formatPrice, seatsLabel } from '../utils/format';
 import BookingForm from '../components/BookingForm';
+import { NoDateContent } from '../components/InfoModals';
 import Photo from '../components/Photo';
 import Accordion from '../components/Accordion';
 import './TripDetailPage.css';
@@ -23,7 +24,10 @@ export default function TripDetailPage() {
     return <Navigate to="/404" replace />;
   }
 
+  const departure = trip.departures[0];
   const openBooking = () => openModal(<BookingForm tripTitle={trip.title} />, `Бронирование: ${trip.title}`);
+  const openNoDate = () => openModal(<NoDateContent tripTitle={trip.title} />, `Даты поездки: ${trip.title}`);
+  const openPrimaryAction = departure ? openBooking : openNoDate;
 
   return (
     <main id="main-content" className="trip-detail">
@@ -39,7 +43,9 @@ export default function TripDetailPage() {
           <dl className="trip-detail__facts">
             <div>
               <dt>Дата</dt>
-              <dd className="demo-note">{trip.date}</dd>
+              <dd className={departure ? 'demo-note' : 'trip-detail__date-pending'}>
+                {departure ? departure.date : 'Уточняется'}
+              </dd>
             </div>
             <div>
               <dt>Продолжительность</dt>
@@ -53,7 +59,7 @@ export default function TripDetailPage() {
             </div>
             <div>
               <dt>Свободные места</dt>
-              <dd>Осталось {seatsLabel(trip.seatsLeft)}</dd>
+              <dd>{departure ? `Осталось ${seatsLabel(departure.seatsLeft)}` : 'Появятся вместе с датой'}</dd>
             </div>
             <div>
               <dt>Сопровождающий</dt>
@@ -64,8 +70,14 @@ export default function TripDetailPage() {
               <dd>{trip.pickupPoints.join(', ')}</dd>
             </div>
           </dl>
-          <button type="button" className="btn btn--primary btn--block" onClick={openBooking}>
-            Забронировать место
+          {!departure && (
+            <p className="trip-detail__no-date-note">
+              Этот маршрут уже проводился и снова появится в расписании, но точная дата на ближайшие месяцы пока не
+              назначена.
+            </p>
+          )}
+          <button type="button" className="btn btn--primary btn--block" onClick={openPrimaryAction}>
+            {departure ? 'Забронировать место' : 'Узнать о датах'}
           </button>
         </div>
       </section>
@@ -163,9 +175,9 @@ export default function TripDetailPage() {
       </section>
 
       <section className="container trip-detail__cta">
-        <p>Готовы поехать?</p>
-        <button type="button" className="btn btn--primary" onClick={openBooking}>
-          Забронировать место
+        <p>{departure ? 'Готовы поехать?' : 'Хотите поехать, когда появится дата?'}</p>
+        <button type="button" className="btn btn--primary" onClick={openPrimaryAction}>
+          {departure ? 'Забронировать место' : 'Узнать о датах'}
         </button>
       </section>
     </main>

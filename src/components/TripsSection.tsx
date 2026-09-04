@@ -16,10 +16,11 @@ const FILTERS: { value: FilterValue; label: string }[] = [
 export default function TripsSection() {
   const [filter, setFilter] = useState<FilterValue>('all');
 
-  const filtered = useMemo(
-    () => (filter === 'all' ? trips : trips.filter((trip) => trip.categories.includes(filter))),
-    [filter]
-  );
+  const filtered = useMemo(() => {
+    const matching = filter === 'all' ? trips : trips.filter((trip) => trip.categories.includes(filter));
+    // Поездки без назначенной даты не убираем из расписания, а откладываем в конец списка.
+    return [...matching].sort((a, b) => Number(b.departures.length > 0) - Number(a.departures.length > 0));
+  }, [filter]);
 
   return (
     <section className="section" id="trips" aria-label="Ближайшие поездки">

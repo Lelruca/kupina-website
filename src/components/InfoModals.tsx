@@ -15,6 +15,22 @@ export function ContactQuestionContent() {
   );
 }
 
+export function NoDateContent({ tripTitle }: { tripTitle: string }) {
+  return (
+    <div className="info-modal">
+      <h2 className="booking-title">Дата поездки уточняется</h2>
+      <p>
+        Маршрут «{tripTitle}» проводится периодически: он уже бывал в расписании и снова появится, но точная дата на
+        ближайшие месяцы пока не назначена.
+      </p>
+      <p>Позвоните нам — подскажем, когда примерно ждать следующую поездку, и запишем вас, как только дата будет назначена.</p>
+      <a className="btn btn--primary btn--block" href={PHONE_HREF}>
+        Позвонить: {PHONE_DISPLAY}
+      </a>
+    </div>
+  );
+}
+
 export function PrivacyPolicyContent() {
   return (
     <div className="info-modal">
